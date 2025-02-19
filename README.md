@@ -1,1 +1,3 @@
-# prak1_v1
+pip3 install -r requirements.txt
+
+# prak1v2

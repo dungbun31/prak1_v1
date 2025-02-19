@@ -1,0 +1,9 @@
+transformers
+torch
+pdfminer.six
+python-docx
+py7zr
+rarfile
+pytesseract
+Pillow
+pdf2image

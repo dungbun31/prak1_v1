@@ -1,0 +1,7 @@
+Name: tom and jerry
+01/01/1980
+Andress: 123 Đường ABC, Quận 1, TP. Hồ Chí Minh
+Phone number: 0901 234 567
+Email: nguyenvana@example.com
+0123456789
+Passport: A1234567
