@@ -5,10 +5,6 @@ from pdf2image import convert_from_path
 
 
 def perform_ocr(file_path):
-    """
-    Perform OCR on image or PDF files.
-    Only supports English (eng).
-    """
     languages = "eng"
     ext = os.path.splitext(file_path)[1].lower()
     if ext == ".pdf":

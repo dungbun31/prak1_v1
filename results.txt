@@ -8,22 +8,22 @@ File: data/muc2.jpg
 Classification Result: b. Credentials for others resources
 
 File: data/ten.txt
-Classification Result: a. Personal data (full name, passport details, Tax Identification Number, Individual insurance number, phone number, email)
+Classification Result: a. Personal data
 
 File: data/hoadon.jpg
-Classification Result: a. Personal data (full name, passport details, Tax Identification Number, Individual insurance number, phone number, email)
+Classification Result: a. Personal data
 
 File: data/hoadon4.jpg
-Classification Result: d. Financial documents (invoices, bank payment slips, receipts, payment orders, payment confirmations)
+Classification Result: d. Financial documents
 
 File: data/hochieu.jpg
-Classification Result: a. Personal data (full name, passport details, Tax Identification Number, Individual insurance number, phone number, email)
+Classification Result: a. Personal data
 
 File: data/hoadon3.jpg
-Classification Result: d. Financial documents (invoices, bank payment slips, receipts, payment orders, payment confirmations)
+Classification Result: d. Financial documents
 
 File: data/hoadon2.jpg
-Classification Result: d. Financial documents (invoices, bank payment slips, receipts, payment orders, payment confirmations)
+Classification Result: d. Financial documents
 
 File: data/hr1.jpg
 Classification Result: c. Accounting/HR data
@@ -41,7 +41,7 @@ File: data/muccuoi2.jpg
 Classification Result: e. Documents marked as confidential
 
 File: data/Лаб 1.docx
-Classification Result: f. Other categories (optional)
+Classification Result: f. Other categories
 
 File: data/muc22.jpg
 Classification Result: b. Credentials for others resources

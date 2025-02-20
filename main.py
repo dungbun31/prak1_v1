@@ -6,22 +6,9 @@ from file_processor import process_file
 
 
 def custom_classify(text):
-    """
-    Classify English document text into the following categories:
-
-      a. Personal data (full name, passport details, Tax Identification Number,
-         Individual insurance number, phone number, email)
-      b. Credentials for others resources
-      c. Accounting/HR data
-      d. Financial documents (invoices, bank payment slips, receipts, payment orders, payment confirmations)
-      e. Documents marked as confidential
-      f. Other categories (optional)
-
-    This function uses regex-based keyword matching (English only) to determine the category.
-    """
     categories = {
-        "a. Personal data (full name, passport details, Tax Identification Number, Individual insurance number, phone number, email)": [
-            "full name",
+        "a. Personal data": [
+            "surname",
             "passport",
             "tax identification",
             "insurance number",
@@ -30,7 +17,8 @@ def custom_classify(text):
             "name",
             "id",
             "sex",
-
+            "age",
+            "birth",
         ],
         "b. Credentials for others resources": [
             "username",
@@ -43,7 +31,6 @@ def custom_classify(text):
             "log",
         ],
         "c. Accounting/HR data": [
-            "accounting",
             "accounts",
             "human resources",
             "hr department",
@@ -59,7 +46,7 @@ def custom_classify(text):
             "attendance",
             "overtime",
         ],
-        "d. Financial documents (invoices, bank payment slips, receipts, payment orders, payment confirmations)": [
+        "d. Financial documents": [
             "invoice",
             "invoices",
             "receipt",
@@ -82,18 +69,17 @@ def custom_classify(text):
         ],
     }
 
+    # so sanh chu voi categories
     scores = {cat: 0 for cat in categories}
     text_lower = text.lower()
-    # Sử dụng regex để so khớp từ khóa chính xác (khớp toàn từ)
     for cat, keywords in categories.items():
         for keyword in keywords:
             pattern = r"\b" + re.escape(keyword) + r"\b"
             if re.search(pattern, text_lower):
                 scores[cat] += 1
 
-    # Nếu không từ khóa nào được tìm thấy, trả về nhóm Other.
     if all(score == 0 for score in scores.values()):
-        return "f. Other categories (optional)"
+        return "f. Other categories"
 
     best_category = max(scores, key=scores.get)
     return best_category
@@ -115,13 +101,11 @@ def main():
 
     start_time = time.time()
 
-    # Tạo hoặc làm trống file results.txt
     output_file = "results.txt"
     with open(output_file, "w", encoding="utf-8") as f:
         f.write("Document Classification Results\n")
         f.write("=" * 50 + "\n\n")
 
-    # Thu thập danh sách file cần xử lý (bỏ qua file .DS_Store)
     files_to_process = []
     if os.path.isdir(args.path):
         for root, dirs, files in os.walk(args.path):
@@ -132,7 +116,7 @@ def main():
     else:
         files_to_process.append(args.path)
 
-    # Xử lý từng file và chỉ ghi kết quả vào file results.txt
+    # ghi ket qua vao file results.txt
     for file_path in files_to_process:
         if time.time() - start_time > args.timeout:
             with open(output_file, "a", encoding="utf-8") as f:

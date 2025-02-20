@@ -3,19 +3,13 @@ import zipfile
 import tempfile
 import email
 import docx
-
 import py7zr
 import rarfile
-
 from pdfminer.high_level import extract_text as pdf_extract_text
 from models.ocr import perform_ocr
 
 
 def process_file(file_path):
-    """
-    Extract text content from a file. Supported formats:
-    txt, docx, pdf, eml, archives (zip, 7z, rar), and image files.
-    """
     ext = os.path.splitext(file_path)[1].lower()
     if ext == ".txt":
         with open(file_path, "r", encoding="utf-8") as f:
@@ -25,7 +19,6 @@ def process_file(file_path):
     elif ext in [".pdf"]:
         text = pdf_extract_text(file_path)
         if not text.strip():
-            # Nếu PDF chứa hình ảnh, sử dụng OCR.
             text = perform_ocr(file_path)
         return text
     elif ext == ".eml":
@@ -82,7 +75,6 @@ def extract_archive(file_path):
             with rarfile.RarFile(file_path) as rf:
                 rf.extractall(tmpdirname)
 
-        # Xử lý đệ quy các file được giải nén.
         for root, dirs, files in os.walk(tmpdirname):
             for f in files:
                 full_path = os.path.join(root, f)

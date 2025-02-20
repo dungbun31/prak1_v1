@@ -16,6 +16,4 @@ setup(
         "pdf2image",
     ],
     entry_points={"console_scripts": ["prak1 = main:main"]},
-    author="Tên của bạn",
-    description="Tiện ích quét, xử lý và phân loại tài liệu sử dụng DeepSeak R1",
 )
